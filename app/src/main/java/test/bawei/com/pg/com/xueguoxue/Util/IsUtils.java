@@ -1,5 +1,6 @@
 package test.bawei.com.pg.com.xueguoxue.Util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
@@ -22,7 +23,7 @@ public class IsUtils {
     }
 
 //    创建设置透明窗口的工具类
-        public static  void noStatus(AppCompatActivity appCompatActivity){
+        public static  void noStatus(Activity appCompatActivity){
             if (Build.VERSION.SDK_INT >= 21) {
                 View decorView = appCompatActivity.getWindow().getDecorView();
                 int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN

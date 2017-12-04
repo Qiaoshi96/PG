@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button= (Button) findViewById(R.id.pop);
-
+            IsUtils.noStatus(MainActivity.this);
         Text= (TextView) findViewById(R.id.texts);
         getDate();
         button.setOnClickListener(new View.OnClickListener() {
