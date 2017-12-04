@@ -17,14 +17,22 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import test.bawei.com.pg.com.xueguoxue.Util.IsUtils;
+
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private PopupWindow popupWindow;
+    private  AppCompatActivity a;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button= (Button) findViewById(R.id.pop);
+
+//        设置透明窗口的工具类
+        IsUtils.noStatus(a);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(MainActivity.this,"diai",Toast.LENGTH_SHORT).show();
+                IsUtils.showShort(MainActivity.this,"走了这个方法");
                 if (popupWindow != null && popupWindow.isShowing()) {
                     popupWindow.dismiss();
                     popupWindow = null;
