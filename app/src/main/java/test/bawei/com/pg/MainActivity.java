@@ -18,11 +18,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import test.bawei.com.pg.com.xueguoxue.Util.IsUtils;
+import test.bawei.com.pg.com.xueguoxue.Util.OKhttpManager;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
     private PopupWindow popupWindow;
-    private  AppCompatActivity a;
+    private TextView Text;
+    private String json_path="http://apiv4.yangkeduo.com/subject_collection/18?pdduid=";
+    //        使用封装后的OKhttp,所定义的成员变量
+    private OKhttpManager manager = OKhttpManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button= (Button) findViewById(R.id.pop);
 
-//        设置透明窗口的工具类
-        IsUtils.noStatus(a);
-
+        Text= (TextView) findViewById(R.id.texts);
+        getDate();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,10 +46,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+        private void  getDate(){
 
-
-
-
+            manager.asyncJsonStringByURL(json_path, new OKhttpManager.Func1() {
+                @Override
+                public void onResponse(String result) {
+                Text.setText(result+"");
+                }
+            });
+        }
     private  void  showPop(View view){
 
         // 获取自定义布局文件activity_popupwindow_left.xml的视图
